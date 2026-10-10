@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aether Studio
 
-## Getting Started
+A cinematic, scroll-driven website for Aether — a fictional creative and product studio headquartered in Dubai Design District. One sculpted object of light carries the story: it turns, drifts and re-frames itself as you scroll from manifesto to selected work to first contact.
 
-First, run the development server:
+**Live:** [studio.ahmadkhajeh.com](https://studio.ahmadkhajeh.com)
+
+Demo project by Ahmad Khajeh — [ahmadkhajeh.com](https://ahmadkhajeh.com)
+
+![Aether Studio hero with the real-time 3D sculpture](docs/screenshots/hero.jpg)
+
+## Highlights
+
+- **Scroll-driven 3D hero** — a real-time React Three Fiber sculpture whose position, rotation and camera are choreographed by scroll across three pinned, crossfading chapters.
+- **A studio rooted in Dubai** — d3 headquarters, a DIFC client lounge, Gulf and global case studies, live Dubai time and pricing in AED with USD equivalents.
+- **Pinned horizontal work gallery** — six case studies glide sideways with image parallax, collapsing into a simple grid on phones.
+- **Buttery smooth scrolling** — Lenis and GSAP ScrollTrigger share a single ticker, so every animation stays in sync.
+- **Performance first** — the 3D canvas loads only after the page is interactive, adapts its resolution to the device, pauses off-screen and runs a lighter scene on mobile.
+- **Respectful motion** — with reduced motion enabled, the site swaps to a static, art-directed hero and native scrolling.
+- **Accessible and searchable** — keyboard-friendly navigation with visible focus, semantic landmarks, structured data, Open Graph images, sitemap and robots.
+- **Validated contact flow** — a typed form with inline errors, budget ranges in AED and a polished success state.
+
+![Pinned horizontal case-study gallery](docs/screenshots/work.jpg)
+
+<p align="center">
+  <img src="docs/screenshots/mobile.jpg" alt="Aether Studio on mobile with the lightweight 3D hero" width="320" />
+</p>
+
+## Tech stack
+
+- [Next.js](https://nextjs.org) (App Router) and TypeScript
+- [Tailwind CSS v4](https://tailwindcss.com) and [shadcn/ui](https://ui.shadcn.com)
+- [React Three Fiber](https://r3f.docs.pmnd.rs), [drei](https://drei.docs.pmnd.rs) and [three.js](https://threejs.org)
+- [GSAP ScrollTrigger](https://gsap.com/docs/v3/Plugins/ScrollTrigger/) and [Lenis](https://lenis.darkroom.engineering)
+- [React Hook Form](https://react-hook-form.com) and [Zod](https://zod.dev)
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Then open [http://localhost:3000](http://localhost:3000).
