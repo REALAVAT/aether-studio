@@ -27,15 +27,17 @@ export function Manifesto() {
     () => {
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
+        // Dim states stay above 4:1 contrast so the copy is readable before it lights up.
+        const scrollTrigger = { trigger: "[data-manifesto]", start: "top 75%", end: "bottom 45%", scrub: true };
         gsap.fromTo(
-          "[data-word]",
-          { opacity: 0.4 },
-          {
-            opacity: 1,
-            ease: "none",
-            stagger: 0.05,
-            scrollTrigger: { trigger: "[data-manifesto]", start: "top 75%", end: "bottom 45%", scrub: true },
-          },
+          "[data-word]:not([data-accent])",
+          { color: "#77736c" },
+          { color: "#f2ede4", ease: "none", stagger: 0.05, scrollTrigger },
+        );
+        gsap.fromTo(
+          "[data-word][data-accent]",
+          { color: "#8f6a35" },
+          { color: "#e8a54b", ease: "none", stagger: 0.05, scrollTrigger },
         );
       });
       return () => mm.revert();
@@ -62,7 +64,12 @@ export function Manifesto() {
           className="font-display text-[clamp(2rem,4.4vw,4.4rem)] leading-[1.06] text-balance text-cream md:col-span-9"
         >
           {manifesto.split(" ").map((word, i) => (
-            <span key={i} data-word className={highlight.has(word) ? "italic text-amber" : undefined}>
+            <span
+              key={i}
+              data-word
+              data-accent={highlight.has(word) || undefined}
+              className={highlight.has(word) ? "italic text-amber" : undefined}
+            >
               {word}{" "}
             </span>
           ))}

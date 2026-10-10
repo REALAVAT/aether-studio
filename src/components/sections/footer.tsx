@@ -49,12 +49,23 @@ export function Footer() {
           </div>
         </div>
 
-        <p
+        <svg
           aria-hidden
-          className="font-display pointer-events-none mt-20 text-[clamp(5rem,22vw,22rem)] leading-[0.8] tracking-tight text-cream/[0.06] select-none md:mt-28"
+          viewBox="0 0 1000 250"
+          className="pointer-events-none mt-20 w-full select-none md:mt-28"
         >
-          Aether<span className="text-amber/40">.</span>
-        </p>
+          <text
+            x="0"
+            y="215"
+            textLength="1000"
+            lengthAdjust="spacingAndGlyphs"
+            fontSize="290"
+            style={{ fontFamily: "var(--font-instrument), serif" }}
+            fill="rgb(242 237 228 / 0.06)"
+          >
+            Aether<tspan fill="rgb(232 165 75 / 0.4)">.</tspan>
+          </text>
+        </svg>
 
         <div className="mt-10 flex flex-col gap-4 border-t border-border pt-8 text-xs text-cream/60 md:flex-row md:items-center md:justify-between">
           <p>
