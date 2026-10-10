@@ -49,6 +49,14 @@ export function Hero() {
           scrollState.hero = 0;
         };
       });
+      // The side scrim only protects the opening headline; lift it so the exploded view stays lit.
+      mm.add("(prefers-reduced-motion: no-preference) and (min-width: 768px) and (orientation: landscape)", () => {
+        gsap.to("[data-hero-scrim]", {
+          opacity: 0.2,
+          ease: "none",
+          scrollTrigger: { trigger: section.current, start: "8% top", end: "28% top", scrub: 0.6 },
+        });
+      });
       return () => mm.revert();
     },
     { scope: section },
@@ -72,30 +80,32 @@ export function Hero() {
 
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,var(--ink)_0%,rgb(10_9_8/0.6)_35%,transparent_65%)] max-md:bg-[linear-gradient(0deg,var(--ink)_8%,rgb(10_9_8/0.75)_45%,transparent_75%)]"
+          data-hero-scrim
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,var(--ink)_0%,rgb(10_9_8/0.6)_35%,transparent_65%)] max-md:bg-[linear-gradient(0deg,var(--ink)_10%,rgb(10_9_8/0.7)_38%,transparent_50%)] md:portrait:bg-[linear-gradient(0deg,var(--ink)_15%,rgb(10_9_8/0.7)_40%,transparent_55%)]"
         />
 
         <div className="relative mx-auto h-full max-w-[1600px] px-5 md:px-10">
           {/* Chapter 1 */}
           <div
             data-chapter="1"
-            className="absolute inset-x-5 bottom-16 md:inset-x-10 md:top-1/2 md:bottom-auto md:-translate-y-1/2"
+            className="absolute inset-x-5 top-[5.25rem] bottom-12 flex flex-col md:inset-x-10 md:top-1/2 md:bottom-auto md:block md:-translate-y-1/2 md:portrait:top-auto md:portrait:bottom-20 md:portrait:translate-y-0"
           >
-            <p className="mb-6 flex items-center gap-3 text-xs tracking-[0.25em] text-cream/70 uppercase">
-              <span className="inline-block size-1.5 rounded-full bg-amber" aria-hidden />
+            <p className="flex items-center gap-3 text-xs leading-5 tracking-[0.25em] text-cream/70 uppercase md:mb-6">
+              <span className="inline-block size-1.5 shrink-0 rounded-full bg-amber" aria-hidden />
               Independent studio · Dubai Design District
             </p>
+            <div aria-hidden className="min-h-4 flex-1 md:hidden" />
             <h1
               id="hero-title"
               className="font-display max-w-[13ch] text-[clamp(3.2rem,8.5vw,8.75rem)] leading-[0.92] text-balance text-cream"
             >
               We shape brands, products &amp; worlds <em className="text-amber">of light.</em>
             </h1>
-            <p className="mt-7 max-w-md text-base leading-relaxed text-cream/70 md:text-lg">
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-cream/70 md:mt-7 md:text-lg">
               Aether is a creative and product studio in Dubai. We design and build the things people
               remember — for founders across the Gulf and the world.
             </p>
-            <div className="mt-9 flex flex-wrap items-center gap-3">
+            <div className="mt-7 flex flex-wrap items-center gap-3 md:mt-9">
               <a
                 href="#contact"
                 onClick={(e) => go(e, "#contact")}
@@ -120,10 +130,10 @@ export function Hero() {
           {/* Chapter 2 */}
           <div
             data-chapter="2"
-            className="invisible absolute inset-x-5 bottom-16 opacity-0 motion-reduce:hidden md:inset-x-auto md:top-1/2 md:right-10 md:bottom-auto md:max-w-xl md:-translate-y-1/2 md:text-right"
+            className="invisible absolute inset-x-5 bottom-16 opacity-0 motion-reduce:hidden md:inset-x-auto md:top-1/2 md:right-10 md:bottom-auto md:max-w-lg md:-translate-y-1/2 md:text-right md:portrait:top-auto md:portrait:bottom-20 md:portrait:left-10 md:portrait:max-w-none md:portrait:translate-y-0"
           >
             <p className="mb-6 text-xs tracking-[0.25em] text-amber uppercase">02 — Craft</p>
-            <p className="font-display text-[clamp(2.6rem,6vw,6rem)] leading-[0.95] text-balance text-cream">
+            <p className="font-display text-[clamp(2.6rem,5.2vw,5.5rem)] leading-[0.95] text-balance text-cream">
               Every surface considered. Every frame <em className="text-amber">engineered.</em>
             </p>
             <p className="mt-6 text-base leading-relaxed text-cream/70 md:ml-auto md:max-w-sm">
