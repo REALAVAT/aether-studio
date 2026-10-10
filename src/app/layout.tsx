@@ -22,8 +22,36 @@ const instrument = Instrument_Serif({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: site.title,
+  title: { default: site.title, template: `%s — ${site.name}` },
   description: site.description,
+  applicationName: site.name,
+  keywords: [
+    "creative studio Dubai",
+    "branding agency Dubai",
+    "product design studio",
+    "web design Dubai",
+    "3D website",
+    "motion design",
+    "Dubai Design District",
+  ],
+  authors: [{ name: "Ahmad Khajeh", url: site.credit.href }],
+  creator: "Ahmad Khajeh",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: site.name,
+    title: site.title,
+    description: site.description,
+    locale: "en_AE",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+  },
+  robots: { index: true, follow: true },
+  formatDetection: { telephone: false },
 };
 
 export const viewport: Viewport = {
