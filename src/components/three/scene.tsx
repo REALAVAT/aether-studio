@@ -79,6 +79,9 @@ export default function Scene({ lite, active, onReady }: SceneProps) {
       frameloop={active ? "always" : "never"}
       camera={{ position: [0, 0.15, 7], fov: 35, near: 0.1, far: 50 }}
       gl={{ antialias: !lite, alpha: true, powerPreference: lite ? "low-power" : "high-performance" }}
+      onCreated={({ gl }) => {
+        gl.debug.checkShaderErrors = process.env.NODE_ENV !== "production";
+      }}
       style={{ pointerEvents: "none" }}
     >
       <PerformanceMonitor

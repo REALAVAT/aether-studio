@@ -33,8 +33,9 @@ type HeroCanvasProps = {
 };
 
 /**
- * Mounts the WebGL scene only after first paint and idle time, so the
- * server-rendered poster and headline own LCP. Never mounts for reduced motion.
+ * Mounts the WebGL scene only after the first interaction (or once the page is
+ * idle), so the server-rendered poster and headline own LCP and the main thread
+ * stays free during load. Never mounts for reduced motion.
  */
 export function HeroCanvas({ sectionRef, ready, onReady }: HeroCanvasProps) {
   const reduced = useReducedMotion();
@@ -44,20 +45,34 @@ export function HeroCanvas({ sectionRef, ready, onReady }: HeroCanvasProps) {
 
   useEffect(() => {
     if (reduced) return;
+    const events = ["pointermove", "pointerdown", "wheel", "touchstart", "keydown", "scroll"] as const;
     let idle = 0;
     let timer = 0;
+    let done = false;
+
     const start = () => {
+      if (done) return;
+      done = true;
+      cleanup();
       if (supportsWebGL()) setMounted(true);
     };
-    if (typeof window.requestIdleCallback === "function") {
-      idle = window.requestIdleCallback(start, { timeout: 1500 });
-    } else {
-      timer = globalThis.setTimeout(start, 600) as unknown as number;
-    }
-    return () => {
-      if (idle) window.cancelIdleCallback(idle);
-      if (timer) window.clearTimeout(timer);
+    const cleanup = () => {
+      events.forEach((e) => window.removeEventListener(e, start));
+      window.clearTimeout(timer);
+      if (idle && typeof window.cancelIdleCallback === "function") window.cancelIdleCallback(idle);
     };
+
+    // First interaction mounts immediately; otherwise wait for the main thread to settle.
+    events.forEach((e) => window.addEventListener(e, start, { passive: true, once: true }));
+    timer = window.setTimeout(() => {
+      if (typeof window.requestIdleCallback === "function") {
+        idle = window.requestIdleCallback(start, { timeout: 1500 });
+      } else {
+        start();
+      }
+    }, 4500);
+
+    return cleanup;
   }, [reduced]);
 
   useEffect(() => {
