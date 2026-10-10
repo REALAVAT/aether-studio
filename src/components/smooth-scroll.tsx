@@ -37,6 +37,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
       lerp: 0.1,
       wheelMultiplier: 1,
       smoothWheel: true,
+      anchors: true,
     });
 
     instance.on("scroll", ScrollTrigger.update);
