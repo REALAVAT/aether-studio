@@ -38,7 +38,7 @@ export function Services() {
                 aria-hidden
                 className="absolute inset-x-0 bottom-[-1px] h-px origin-left scale-x-0 bg-amber transition-transform duration-700 ease-out-expo group-hover:scale-x-100"
               />
-              <span className="font-display text-xl text-amber md:col-span-1">0{i + 1}</span>
+              <span className="font-display text-xl text-amber md:col-span-1">{`0${i + 1}`}</span>
               <h3 className="font-display text-5xl leading-none text-cream transition-transform duration-700 ease-out-expo group-hover:translate-x-3 md:col-span-4 md:text-7xl">
                 {service.title}
               </h3>
