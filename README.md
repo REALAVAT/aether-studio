@@ -1,28 +1,29 @@
 # Aether Studio
 
-A cinematic, scroll-driven website for Aether — a fictional creative and product studio headquartered in Dubai Design District. One sculpted object of light carries the story: it turns, drifts and re-frames itself as you scroll from manifesto to selected work to first contact.
+A cinematic, scroll-driven website for Aether — a fictional creative and product studio headquartered in Dubai Design District. A pair of premium over-ear headphones carries the story: it turns slowly as you scroll, opens into an exploded view of its parts, then reassembles and settles.
 
 **Live:** [studio.ahmadkhajeh.com](https://studio.ahmadkhajeh.com)
 
 Demo project by Ahmad Khajeh — [ahmadkhajeh.com](https://ahmadkhajeh.com)
 
-![Aether Studio hero with the real-time 3D sculpture](docs/screenshots/hero.jpg)
+![Aether Studio hero with real-time 3D headphones](docs/screenshots/hero.jpg)
 
 ## Highlights
 
-- **Scroll-driven 3D hero** — a real-time React Three Fiber sculpture whose position, rotation and camera are choreographed by scroll across three pinned, crossfading chapters.
+- **Scroll-driven 3D hero** — real-time React Three Fiber headphones, modelled entirely in code, with a brushed-steel band, matte cups, amber accent rings and studio reflections. Scroll choreographs a slow three-quarter turn, an exploded view and a final settle across three pinned, crossfading chapters.
+- **Exploded view with callouts** — ear cups, cushions, drivers and headband separate along their axes, each tracked by a thin amber label.
 - **A studio rooted in Dubai** — d3 headquarters, a DIFC client lounge, Gulf and global case studies, live Dubai time and pricing in AED with USD equivalents.
 - **Pinned horizontal work gallery** — six case studies glide sideways with image parallax, collapsing into a simple grid on phones.
 - **Buttery smooth scrolling** — Lenis and GSAP ScrollTrigger share a single ticker, so every animation stays in sync.
-- **Performance first** — the 3D canvas loads only after the page is interactive, adapts its resolution to the device, pauses off-screen and runs a lighter scene on mobile.
-- **Respectful motion** — with reduced motion enabled, the site swaps to a static, art-directed hero and native scrolling.
+- **Performance first** — a pre-rendered still paints instantly while the 3D scene loads in the background, then adapts its resolution to the device, pauses off-screen and runs a lighter scene on mobile.
+- **Respectful motion** — with reduced motion enabled, the site shows a still render of the headphones and uses native scrolling.
 - **Accessible and searchable** — keyboard-friendly navigation with visible focus, semantic landmarks, structured data, Open Graph images, sitemap and robots.
 - **Validated contact flow** — a typed form with inline errors, budget ranges in AED and a polished success state.
 
-![Pinned horizontal case-study gallery](docs/screenshots/work.jpg)
+![Exploded view of the headphones with amber callouts](docs/screenshots/exploded.jpg)
 
 <p align="center">
-  <img src="docs/screenshots/mobile.jpg" alt="Aether Studio on mobile with the lightweight 3D hero" width="320" />
+  <img src="docs/screenshots/mobile.jpg" alt="Aether Studio on mobile with the lightweight 3D headphones" width="320" />
 </p>
 
 ## Tech stack
